@@ -8,7 +8,7 @@ function convertToString(i, j){
 		//convert the char code to string (Alphabets)
 		set+=String.fromCharCode(k);
 	}
-  console.log(set);
+  // console.log(set);
   return set;
 }
 const upper = convertToString(97,123);
@@ -33,13 +33,14 @@ const CharTypes = Object.freeze({
 
 // Create a global variable called "pwLength" with a number between 10 and 18
 const min=12, max=18;
-const pwLength = Math.floor(Math.random() * (max - min)) + min;
-console.log("Password Length: "+ pwLength);
+let pwLength;
 
 // Using the above array and password length variable, create a random password using a for loop inside of a function called "addNewPassword" either saved as an arrow function variable or a traditional function
 function addNewPassword(){
   let i=0;
   let str = "";
+  pwLength = Math.ceil(Math.random() * (max - min)) + min;
+  console.log("Password Length: "+ pwLength);
   while(i<pwLength){
     i++;
     let type = charTypes[Math.floor(Math.random()*4)];
@@ -48,27 +49,24 @@ function addNewPassword(){
       case 'upper':
         len=CharTypes.UPPER.length;
         random = upper.charAt(Math.floor(Math.random()*len));
-        // console.log("random: "+random);
         break;
       case 'lower':
         len=CharTypes.LOWER.length;
         random = lower.charAt(Math.floor(Math.random()*len));
-        // console.log("random: "+random, "len: "+len);
         break;
       case 'number':
         len=CharTypes.NUMBER.length;
         random = number.charAt(Math.floor(Math.random()*len));
-        // console.log("random: "+random, "len: "+len);
         break;
       case 'special':
         len=CharTypes.SPECIAL.length;
         random = special.charAt(Math.floor(Math.random()*len));
-        // console.log("random: "+random, "len: "+len);
+        
         break;
       default:
         console.log(`Sorry, no type as ${type}.`);
     }
-    // console.log("new char: "+random);
+    // console.log("random: "+random, "len: "+len);
     str+=random;
   }
   // console.log("Generated Password: "+str);
