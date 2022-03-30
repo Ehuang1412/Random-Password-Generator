@@ -73,15 +73,31 @@ function addNewPassword(){
   return str;
 }
 
+
+
+function changeVisibility(){
+  let ele = document.getElementsByClassName("slide-right")[0];
+  console.log("visibility: "+window.getComputedStyle(ele).visibility);
+  if(document.getElementsByClassName("slide-right")[0].style.visibility == "hidden"){    
+    document.getElementsByClassName("slide-right")[0].style.visibility = "visible";
+    document.getElementsByClassName("slide-right")[0].style.marginLeft = "100%";
+    ele = document.getElementsByClassName("slide-right")[0];
+  console.log("visibility: "+window.getComputedStyle(ele).visibility);
+  }
+  setTimeout(() => {console.log("this is the first message");
+                    document.getElementsByClassName("slide-right")[0].style.visibility = "hidden";}, 1000);
+  
+}
+
 //https://www.w3resource.com/javascript/form/password-validation.php
 function CheckPassword(inputtxt) { 
   var decimal=  /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,15}$/;
   if(inputtxt.value.match(decimal)) { 
-    alert('Correct, try another...')
+    alert('Correct, try another...');
     return true;
   }
   else{ 
-    alert('Wrong...!')
+    alert('Wrong...!');
     return false;
   }
 } 
@@ -89,7 +105,8 @@ function CheckPassword(inputtxt) {
 
 let genBtn = document.getElementById("btnGen");
 let buttonHandler = () => {
-    document.getElementById("password").value = addNewPassword();
+  document.getElementById("password").value = addNewPassword();
+  changeVisibility();
 };
 // Event listener for generate PW button
 genBtn.addEventListener("click", buttonHandler);
